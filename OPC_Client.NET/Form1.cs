@@ -14,6 +14,7 @@ namespace OPC_Client.NET
     public partial class frmOPCClient : Form
     {
         private OPCTag[] tags;
+        private BindingList<OPCData> data;
         private bool updateOPC = false;
         private int tagCount = Properties.Settings.Default.TagCount;
         private OPCServer mServer;
@@ -31,9 +32,14 @@ namespace OPC_Client.NET
         {
             InitializeComponent();
             tags = new OPCTag[tagCount];
+            data = new BindingList<OPCData>();
             for (int i = 0; i < tagCount; i++)
             {
                 tags[i] = new OPCTag();
+                data.Add(new OPCData());
+                //data[i] = new OPCData();
+                
+
                 if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Tags[i]) && Properties.Settings.Default.Tags[i].Contains('.'))
                 {
                     tags[i].sensorName = Properties.Settings.Default.Tags[i].Split('.')[0];
@@ -47,7 +53,7 @@ namespace OPC_Client.NET
 
                 
             }
-
+            dataGridView1.DataSource = data;
             GetOPCServerList();
             
         }
@@ -185,7 +191,8 @@ namespace OPC_Client.NET
                             string sValue = string.Empty;
                             object vItemID = this.mBrowser.Item(i).ToString();
                             string sItemID = vItemID.ToString();
-                            this.lBoxTags.Items.Add(sItemID);
+                            if(!lBoxTags.Items.Contains(sItemID))
+                                this.lBoxTags.Items.Add(sItemID);
                             //ListViewItem oListViewItem = lstTags.Items.Add(sItemID);
 
                             //Adding the new tag to the OPC Group.
@@ -254,8 +261,14 @@ namespace OPC_Client.NET
 
                 if (data != "")
                 {
-                    this.lblTagName.Text = tag;
-                    this.lblTagValue.Text = data;                    
+
+                    this.data[i - 1].tagName = tag;
+                    this.data[i - 1].data = data;
+
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = this.data;
+                    //this.lblTagName.Text = tag;
+                    //this.lblTagValue.Text = data;                    
                 }
             }
         }
@@ -296,5 +309,11 @@ namespace OPC_Client.NET
     {
         public string sensorName;
         public string tagName;
+    }
+
+    public class OPCData
+    {
+        public string tagName { get; set; }
+        public string data { get; set; }
     }
 }
