@@ -259,12 +259,14 @@ namespace OPC_Client.NET
                     MessageBox.Show("No tags found or selected!!");
                     return;
                 }
-
-                
+                                
                 this.mGroup.OPCItems.AddItem(lBoxTags.SelectedItem.ToString(), 1);
                 string[] items = lBoxTags.SelectedItem.ToString().Split('.');
+
+
                 Properties.Settings.Default.SensorName = items[0];
                 Properties.Settings.Default.TagName = items[1];
+                
                 Properties.Settings.Default.Save();
                 MessageBox.Show("Tag Added succesfully");
             }

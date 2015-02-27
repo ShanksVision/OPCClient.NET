@@ -72,5 +72,29 @@ namespace OPC_Client.NET.Properties {
                 this["Setting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SensorName2 {
+            get {
+                return ((string)(this["SensorName2"]));
+            }
+            set {
+                this["SensorName2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TagName2 {
+            get {
+                return ((string)(this["TagName2"]));
+            }
+            set {
+                this["TagName2"] = value;
+            }
+        }
     }
 }
