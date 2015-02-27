@@ -20,7 +20,7 @@ namespace OPC_Client.NET
         private OPCGroups mGroups;
         private OPCGroup mGroup;
         private OPCBrowser mBrowser;
-        
+        int clienthandle;
         private bool mServerConnected;
 
         private const int DEFAULT_GROUP_UPDATE_RATE = 50;
@@ -34,8 +34,18 @@ namespace OPC_Client.NET
             for (int i = 0; i < tagCount; i++)
             {
                 tags[i] = new OPCTag();
-                tags[i].sensorName = Properties.Settings.Default.SensorName;
-                tags[i].tagName = Properties.Settings.Default.TagName;
+                if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.Tags[i]) && Properties.Settings.Default.Tags[i].Contains('.'))
+                {
+                    tags[i].sensorName = Properties.Settings.Default.Tags[i].Split('.')[0];
+                    tags[i].tagName = Properties.Settings.Default.Tags[i].Split('.')[1];
+                }
+                else
+                {
+                    tags[i].sensorName = "";
+                    tags[i].tagName = "";
+                }
+
+                
             }
 
             GetOPCServerList();
@@ -148,13 +158,13 @@ namespace OPC_Client.NET
 
                 try
                 {
-                    int clienthandle = 1;
+                    
                     foreach (OPCTag tempTag in this.tags)
                     {
 
                         sSensor = tempTag.sensorName;
                         this.mBrowser.MoveToRoot();
-                        if(!string.IsNullOrWhiteSpace(sSensor))
+                        if (!string.IsNullOrWhiteSpace(sSensor))
                         {
                             try
                             {
@@ -260,12 +270,14 @@ namespace OPC_Client.NET
                     return;
                 }
 
-                
-                this.mGroup.OPCItems.AddItem(lBoxTags.SelectedItem.ToString(), 1);
-                string[] items = lBoxTags.SelectedItem.ToString().Split('.');
-                Properties.Settings.Default.SensorName = items[0];
-                Properties.Settings.Default.TagName = items[1];
+                 Properties.Settings.Default.Tags[clienthandle] = lBoxTags.SelectedItem.ToString();
+                clienthandle++;       
+                this.mGroup.OPCItems.AddItem(lBoxTags.SelectedItem.ToString(), clienthandle);                
                 Properties.Settings.Default.Save();
+
+                if (clienthandle == 2)
+                    btnAddTag.Enabled = false;
+
                 MessageBox.Show("Tag Added succesfully");
             }
             catch (Exception)

@@ -49,7 +49,7 @@ namespace OPC_Client.NET.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public int TagCount {
             get {
                 return ((int)(this["TagCount"]));
@@ -58,18 +58,15 @@ namespace OPC_Client.NET.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>strin1</string>
-  <string>string2</string>
-  <string>string3</string>
-</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
+            "tring>strin1</string>\r\n  <string>string2</string>\r\n</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection Tags {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Setting"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Tags"]));
             }
             set {
-                this["Setting"] = value;
+                this["Tags"] = value;
             }
         }
     }
