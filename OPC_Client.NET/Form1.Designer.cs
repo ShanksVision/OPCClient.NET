@@ -34,11 +34,11 @@
             this.lBoxTags = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddTag = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.lblTagName = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.lblTagValue = new System.Windows.Forms.Label();
             this.btnRefreshServer = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lBoxOPCServers
@@ -97,16 +97,6 @@
             this.btnAddTag.UseVisualStyleBackColor = true;
             this.btnAddTag.Click += new System.EventHandler(this.btnAddTag_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 306);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Tag Name : ";
-            // 
             // lblTagName
             // 
             this.lblTagName.AutoSize = true;
@@ -115,16 +105,6 @@
             this.lblTagName.Name = "lblTagName";
             this.lblTagName.Size = new System.Drawing.Size(0, 16);
             this.lblTagName.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(304, 306);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Tag Value : ";
             // 
             // lblTagValue
             // 
@@ -145,16 +125,26 @@
             this.btnRefreshServer.UseVisualStyleBackColor = true;
             this.btnRefreshServer.Click += new System.EventHandler(this.btnRefreshServer_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(121, 296);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(271, 150);
+            this.dataGridView1.TabIndex = 11;
+            // 
             // frmOPCClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 342);
+            this.ClientSize = new System.Drawing.Size(545, 458);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnRefreshServer);
             this.Controls.Add(this.lblTagValue);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblTagName);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddTag);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lBoxTags);
@@ -168,6 +158,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OPC .NET Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOPCClient_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,11 +172,10 @@
         private System.Windows.Forms.ListBox lBoxTags;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddTag;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTagName;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTagValue;
         private System.Windows.Forms.Button btnRefreshServer;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
